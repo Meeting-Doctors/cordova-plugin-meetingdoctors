@@ -1,0 +1,22 @@
+repositories {
+    google()
+    jcenter()
+    maven { url "https://meetingdoctors.jfrog.io/artifactory/Android/" }
+}
+
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+dependencies {
+    implementation 'com.meetingdoctors:customer-chat-sdk:1.41.5'
+    implementation 'com.meetingdoctors:meetingdoctors-security-sdk:1.1.0'
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-core'
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-inappmessaging-display-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-dynamic-links-ktx'
+    implementation 'com.google.firebase:firebase-config-ktx'
+    implementation 'com.google.firebase:firebase-iid'
+}
