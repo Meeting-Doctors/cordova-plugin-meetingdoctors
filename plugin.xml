@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com-meetingdoctors-cordova" version="1.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>MeetingDoctors</name>
+    <js-module name="CDVMeetingDoctors" src="www/CDVMeetingDoctors.js">
+        <clobbers target="meetingdoctors" />
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="CDVMeetingDoctors">
+                <param name="ios-package" value="CDVMeetingDoctors" />
+            </feature>
+            <preference name="deployment-target" value="13.0" />
+            <preference name="UseSwiftLanguageVersion" value="5" />
+        </config-file>
+        <source-file src="src/ios/CDVMeetingDoctors.swift" />
+        <source-file src="src/ios/UIColor+Hex.swift" />
+        <podspec>
+            <config>
+                <source url="https://cdn.cocoapods.org/" />
+                <source url="https://bitbucket.org/meetingdoctors-team/cocoapods-specs.git" />
+            </config>
+            <pods use-frameworks="true">
+                <pod name="MeetingDoctorsSDK" spec="5.4.4" />
+            </pods>
+        </podspec>
+    </platform>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="CDVMeetingDoctors">
+                <param name="android-package" value="com.meetingdoctors.cordova.CDVMeetingDoctors" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/CDVMeetingDoctors.java" target-dir="src/com/meetingdoctors/cordova" />
+
+        <framework src="src/android/plugin.gradle" custom="true" type="gradleReference"/>
+    </platform>
+</plugin>
